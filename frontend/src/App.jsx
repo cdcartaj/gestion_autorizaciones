@@ -171,16 +171,22 @@ function App() {
             
             <div className="col-md-4">
               <label className="form-label">Responsable</label>
-              <input type="text" className="form-control border border-secondary text-dark"
+              <input type="text" 
+              //Si el nombre existe, inhabilita el campo.
+              className= {!name ? "form-control border border-secondary text-dark": 
+                                  "form-control border border-secondary bg-success text-white"}  
+
                 // value={nuevo.responsable}
-                value={name}
+                value={name || 'Anónimo'}
+                disabled = {name} //Deshabilita el campo si recupera el nombre.
+                //value={name}
                 onChange={(e) => setNuevo({ ...nuevo, responsable: e.target.value })}
                 required />
             </div>
 
             <div className="col-md-4">
               <label className="form-label">SIN</label>
-              <input type="number" className="form-control border border-secondary text-dark"
+              <input type="number" className="form-control border border-secondary bg- text-dark"
                 placeholder='Ej: 123456' min='10000' max='999999' 
                 value={nuevo.sin}
                 onChange={(e) => setNuevo({ ...nuevo, sin: e.target.value })}
